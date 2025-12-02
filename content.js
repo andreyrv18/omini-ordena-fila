@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     // --- FUNÇÃO DE ORDENAÇÃO ---
@@ -68,8 +68,12 @@
         `;
 
         // Efeitos visuais
-        sortButton.onmouseover = () => { sortButton.style.backgroundColor = '#c82333'; };
-        sortButton.onmouseout = () => { sortButton.style.backgroundColor = '#dc3545'; };
+        sortButton.onmouseover = () => {
+            sortButton.style.backgroundColor = '#c82333';
+        };
+        sortButton.onmouseout = () => {
+            sortButton.style.backgroundColor = '#dc3545';
+        };
 
         // Ação
         sortButton.onclick = (e) => {
