@@ -26,9 +26,5 @@
   },
   "permissions": [
     "storage"
-  ],
-  "host_permissions": [
-    "https://omnidixi.falehandix.com.br/*",
-    "https://*.omni.com.br/*"
   ]
 }
