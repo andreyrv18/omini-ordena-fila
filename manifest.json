@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Omni - Ordenador de Fila",
-  "version": "2.0",
+  "version": "2.1.1",
   "description": "Ordena atendimentos por tempo e destaca atendimentos sem interação há mais de 20 minutos.",
   "icons": {
     "128": "icon.png"
