@@ -41,76 +41,71 @@
         // Ordenar e Reaplicar no DOM
         items.sort((a, b) => getMinutes(b) - getMinutes(a));
 
+        const fragment = document.createDocumentFragment();
         items.forEach((item) => {
             item.style.order = "";
-            container.appendChild(item);
+            fragment.appendChild(item);
         });
+        container.appendChild(fragment);
 
         console.log(`✅ OmniSort: ${items.length} atendimentos reordenados!`);
     }
 
-    // --- LÓGICA DE INTERFACE E ATIVAÇÃO ---
-    const SORT_BUTTON_ID = 'botao-ordenar-atendimentos';
+    // --- LÓGICA DE INTERFACE E ATIVAÇÃO (MENU NATIVO) ---
+    const MENU_SELECTOR = '.menu';
+    const REFERENCE_SELECTOR = '[data-id="atend_aguard"]'; // Item de referência (Fila)
+    const NEW_ITEM_ID = 'omni-sort-button';
+    const COLOR_DEFAULT = '#6d6d6d';
+    const COLOR_ACTIVE = '#EF7D00';
+    const initMenuInterval = setInterval(() => {
+        const menu = document.querySelector(MENU_SELECTOR);
+        const referenceItem = document.querySelector(REFERENCE_SELECTOR);
 
-    // 1. Cria o botão (Invisível por padrão)
-    if (!document.getElementById(SORT_BUTTON_ID)) {
-        const sortButton = document.createElement('button');
-        sortButton.innerText = 'Ordenar ⏳';
-        sortButton.id = SORT_BUTTON_ID;
+        // Verifica se o menu carregou e se o botão já não existe
+        if (menu && referenceItem && !document.getElementById(NEW_ITEM_ID)) {
 
-        // Estilos do botão
-        sortButton.style.cssText = `
-            position: fixed; top: 10px; right: 10px; z-index: 99999;
-            background-color: #dc3545; color: white; border: none;
-            padding: 8px 15px; border-radius: 5px; cursor: pointer;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.2); font-weight: bold;
-            font-family: sans-serif; display: none;
-        `;
+            // 1. Cria o container do item
+            const sortItem = document.createElement('div');
+            sortItem.className = 'item'; // Classe nativa para herdar o estilo (hover, tamanho)
+            sortItem.dataset.id = 'ordenar_fila'; // Data-id customizado
+            sortItem.id = NEW_ITEM_ID;
+            sortItem.title = 'Ordenar por Tempo Mais Antigo'; // Tooltip nativo
+            sortItem.style.cursor = 'pointer'; // Garante cursor de mãozinha
 
-        // Efeitos visuais
-        sortButton.onmouseover = () => {
-            sortButton.style.backgroundColor = '#c82333';
-        };
-        sortButton.onmouseout = () => {
-            sortButton.style.backgroundColor = '#dc3545';
-        };
+            // 2. Cria o ícone (usando FontAwesome já presente no site)
+            const icon = document.createElement('i');
+            icon.className = 'fas fa-hourglass-start'; // Ícone de ampulheta (ou use 'fas fa-sort-amount-down')
+            icon.style.color = COLOR_DEFAULT;
+            icon.style.transition = 'color 0.2s';
+            // 3. Monta o botão
+            sortItem.appendChild(icon);
 
-        // Ação
-        sortButton.onclick = (e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            ordenarPorTempoMaisAntigo();
-        };
+            // 4. Adiciona Ação
+            sortItem.onclick = (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                icon.style.color = COLOR_ACTIVE;
+                icon.style.transform = "rotate(180deg)";
+                // Feedback visual de clique rápido
+                sortItem.style.transform = "scale(0.90)";
+                setTimeout(() => sortItem.style.transform = "scale(1)", 150);
 
-        document.body.appendChild(sortButton);
-    }
-
-    // 2. Monitora cliques na fila para mostrar o botão
-    const targetSelector = '[data-id="atend_aguard"]';
-    const button = document.getElementById(SORT_BUTTON_ID);
-
-    // Intervalo para achar o menu lateral (já que o site pode demorar a carregar)
-    const initInterval = setInterval(() => {
-        const targetElement = document.querySelector(targetSelector);
-
-        if (targetElement) {
-            clearInterval(initInterval);
-
-            // Ao clicar na fila -> Mostra botão
-            targetElement.addEventListener('click', () => {
-                if (button) button.style.display = 'block';
+                ordenarPorTempoMaisAntigo();
+            };
+            document.addEventListener('click', (e) => {
+                // Se o clique não foi no botão e o botão está ativo...
+                if (icon.style.color !== COLOR_DEFAULT) {
+                    icon.style.color = COLOR_DEFAULT; // Desativa cor
+                    icon.style.transform = "rotate(0deg)"; // Remove a rotação
+                }
             });
+            // 5. INSERÇÃO: Coloca o botão logo APÓS o item de "Atendimentos na fila"
+            referenceItem.before(sortItem);
 
-            // Ao clicar fora da fila (no menu pai) -> Esconde botão
-            const listParent = targetElement.closest('.list');
-            if (listParent) {
-                listParent.addEventListener('click', (e) => {
-                    const clickedOnQueue = e.target.closest(targetSelector);
-                    if (!clickedOnQueue && button) {
-                        button.style.display = 'none';
-                    }
-                });
-            }
+            // Se preferir no final do menu, use: menu.appendChild(sortItem);
+
+            clearInterval(initMenuInterval); // Para o loop pois já inseriu
+            console.log("✅ OmniSort: Botão adicionado ao menu lateral.");
         }
     }, 800);
 
