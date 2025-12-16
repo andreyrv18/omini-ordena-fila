@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "Omni - Ordenador de Fila",
-  "version": "1.0",
-  "description": "Adiciona botão para ordenar atendimentos por tempo (Antigos Primeiro) ao clicar na fila.",
+  "version": "2.0",
+  "description": "Ordena atendimentos por tempo e destaca atendimentos sem interação há mais de 20 minutos.",
   "icons": {
     "128": "icon.png"
   },
@@ -12,9 +12,20 @@
         "https://omnidixi.falehandix.com.br/*",
         "https://*.omni.com.br/*"
       ],
-      "js": ["content.js"],
+      "js": [
+        "content.js"
+      ],
       "run_at": "document_idle"
     }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "128": "icon.png"
+    }
+  },
+  "permissions": [
+    "storage"
   ],
   "host_permissions": [
     "https://omnidixi.falehandix.com.br/*",
