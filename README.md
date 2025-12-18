@@ -30,7 +30,8 @@ Adapte a ferramenta ao setor que trabalha. Clicando no ícone da extensão na ba
 
 ## 📸 Screenshots
 ![Imagem de capa](Chrome-Store-Imagens/1280x800-v2.2.0.png "Capa") 
-![Imagem de capa](Chrome-Store-Imagens/440x280-v2.2.0.png "Capa") 
+![Bloco promocional](Chrome-Store-Imagens/440x280-v2.2.0.png "Bloco promocional")
+![Banner](Chrome-Store-Imagens/1400x560-v2.2.0.png "Banner")
 
 
 ---
