@@ -8,7 +8,7 @@ Uma extensão para Google Chrome desenvolvida para otimizar o fluxo de trabalho 
 
 ---
 
-## ✨ Funcionalidades Principais
+##  Funcionalidades Principais
 
 ### 1. ⏳ Ordenação de Fila (Integração Nativa)
 Chega de procurar visualmente quem está esperando há mais tempo.
@@ -21,7 +21,7 @@ Nunca mais esqueça um atendimento parado.
 - **Alerta Visual:** Se a última mensagem (do cliente ou do agente) ultrapassar o tempo limite configurado, o card recebe uma **borda vermelha** e um fundo avermelhado para destaque imediato.
 - **Inteligência:** O algoritmo detecta viradas de dia (ex: mensagem às 23:50 e agora são 08:00) para calcular o tempo corretamente.
 
-### 3. ⚙️ Configurações Personalizáveis
+### 3. Configurações Personalizáveis
 Adapte a ferramenta ao setor que trabalha. Clicando no ícone da extensão na barra do navegador, você pode:
 - **Ativar/Desativar:** Ligue ou desligue o monitor de inatividade com um clique.
 - **Definir Tempo:** Escolha quantos minutos de inatividade são necessários para disparar o alerta (Padrão: 20 minutos).
@@ -35,18 +35,18 @@ Adapte a ferramenta ao setor que trabalha. Clicando no ícone da extensão na ba
 
 
 ---
-## 🧭 Instalação (Chrome Store)
+##  Instalação (Chrome Store)
 
-1. Acesse : [Omni - Ordenador de Fila](https://chromewebstore.google.com/detail/omni-ordenador-de-fila/gkgjbjjmemafdobnaddiihkijddojpij?authuser=0&hl=pt-BR)
+1. Acesse: [Omni - Ordenador de Fila](https://chromewebstore.google.com/detail/omni-ordenador-de-fila/gkgjbjjmemafdobnaddiihkijddojpij?authuser=0&hl=pt-BR)
 2. clique em usar no Chrome
 3. Vá até o Omni, no menu lateral terá um novo ícone (Ampulheta) em cima do botão da fila,
 4. Clique na fila depois clique na ampulheta. Pronto sua fila está ordenada
 
-## 🛠️ Instalação (Modo Desenvolvedor)
+## Instalação (Modo Desenvolvedor)
 
 Como esta extensão é Open Source, você pode instalá-la manualmente:
 
-1. Faça o **Download** deste repositório (Code -> Download ZIP) e extraia a pasta.
+1. Faça o **Download** deste repositório (Code → Download ZIP) e extraia a pasta.
 2. No Google Chrome, acesse `chrome://extensions/`.
 3. Ative o **Modo do desenvolvedor** no canto superior direito.
 4. Clique em **Carregar sem compactação** (Load Unpacked).
@@ -55,7 +55,7 @@ Como esta extensão é Open Source, você pode instalá-la manualmente:
 
 ---
 
-## 🔧 Tecnologias e Permissões
+## Tecnologias e Permissões
 
 A extensão foi construída utilizando **Manifest V3** e **Vanilla JavaScript**.
 
@@ -66,11 +66,11 @@ A extensão foi construída utilizando **Manifest V3** e **Vanilla JavaScript**.
 
 ---
 
-## 📝 Licença
+## Licença
 
 Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
 ---
 
-### ☕ Apoie o projeto
+### Apoie o projeto
 Se esta extensão ajuda no seu dia a dia, considere deixar uma ⭐ estrela neste repositório!
