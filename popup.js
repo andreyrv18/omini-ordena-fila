@@ -8,55 +8,47 @@ document.addEventListener('DOMContentLoaded', () => {
     const rangeOutlineWidth = document.getElementById('rangeOutlineWidth');
     const outlineWidthValue = document.getElementById('outlineWidthValue');
 
-    // Chaves do Storage
-    const INATIVAR_ENABLED_KEY = 'inativarEnabled';
-    const INATIVAR_TIME_KEY = 'inativarTime';
-    const DASHBOARD_FOCUS_ENABLED_KEY = 'dashboardFocusEnabled';
-    const DF_OUTLINE_STYLE_KEY = 'df_outlineStyle';
-    const DF_OUTLINE_WIDTH_KEY = 'df_outlineWidth';
-    const DF_OUTLINE_COLOR_KEY = 'df_outlineColor';
-
     // Carregar estados salvos
     chrome.storage.local.get(
         [
-            INATIVAR_ENABLED_KEY, INATIVAR_TIME_KEY, DASHBOARD_FOCUS_ENABLED_KEY,
-            DF_OUTLINE_STYLE_KEY, DF_OUTLINE_WIDTH_KEY, DF_OUTLINE_COLOR_KEY
+            STORAGE_KEYS.INATIVAR_ENABLED, STORAGE_KEYS.INATIVAR_TIME, STORAGE_KEYS.DASHBOARD_FOCUS_ENABLED,
+            STORAGE_KEYS.DF_OUTLINE_STYLE, STORAGE_KEYS.DF_OUTLINE_WIDTH, STORAGE_KEYS.DF_OUTLINE_COLOR
         ],
         (result) => {
             // Destaque de Inativos (padrão: ativado, 20 min)
-            toggleInativar.checked = result[INATIVAR_ENABLED_KEY] !== false;
-            inputTempo.value = result[INATIVAR_TIME_KEY] || 20;
+            toggleInativar.checked = result[STORAGE_KEYS.INATIVAR_ENABLED] !== false;
+            inputTempo.value = result[STORAGE_KEYS.INATIVAR_TIME] || 20;
 
             // Destaque ao Visualizar (padrão: ativado)
-            const isDashboardFocusEnabled = result[DASHBOARD_FOCUS_ENABLED_KEY] !== false;
+            const isDashboardFocusEnabled = result[STORAGE_KEYS.DASHBOARD_FOCUS_ENABLED] !== false;
             toggleDashboardFocus.checked = isDashboardFocusEnabled;
             dashboardOptionsContainer.style.display = isDashboardFocusEnabled ? 'flex' : 'none';
 
             // Carrega configurações de personalização
-            selectOutlineStyle.value = result[DF_OUTLINE_STYLE_KEY] || 'dotted';
-            const outlineWidth = result[DF_OUTLINE_WIDTH_KEY] || 3;
+            selectOutlineStyle.value = result[STORAGE_KEYS.DF_OUTLINE_STYLE] || 'dotted';
+            const outlineWidth = result[STORAGE_KEYS.DF_OUTLINE_WIDTH] || 3;
             rangeOutlineWidth.value = outlineWidth;
             outlineWidthValue.textContent = `${outlineWidth}px`;
-            selectOutlineColor.value = result[DF_OUTLINE_COLOR_KEY] || '#007bff';
+            selectOutlineColor.value = result[STORAGE_KEYS.DF_OUTLINE_COLOR] || '#007bff';
         });
 
     // Salvar estado ao alterar o switch
     toggleInativar.addEventListener('change', () => {
-        chrome.storage.local.set({[INATIVAR_ENABLED_KEY]: toggleInativar.checked});
+        chrome.storage.local.set({[STORAGE_KEYS.INATIVAR_ENABLED]: toggleInativar.checked});
     });
 
     // Salvar tempo ao alterar o input
     inputTempo.addEventListener('change', () => {
         const time = parseInt(inputTempo.value, 10);
         if (time > 0) {
-            chrome.storage.local.set({[INATIVAR_TIME_KEY]: time});
+            chrome.storage.local.set({[STORAGE_KEYS.INATIVAR_TIME]: time});
         }
     });
 
     // Salvar estado do Destaque ao Visualizar
     toggleDashboardFocus.addEventListener('change', () => {
         const isEnabled = toggleDashboardFocus.checked;
-        chrome.storage.local.set({[DASHBOARD_FOCUS_ENABLED_KEY]: isEnabled});
+        chrome.storage.local.set({[STORAGE_KEYS.DASHBOARD_FOCUS_ENABLED]: isEnabled});
         dashboardOptionsContainer.style.display = isEnabled ? 'flex' : 'none';
     });
 
@@ -64,8 +56,8 @@ document.addEventListener('DOMContentLoaded', () => {
     rangeOutlineWidth.addEventListener('input', () => {
         const width = rangeOutlineWidth.value;
         outlineWidthValue.textContent = `${width}px`;
-        chrome.storage.local.set({[DF_OUTLINE_WIDTH_KEY]: parseInt(width, 10)});
+        chrome.storage.local.set({[STORAGE_KEYS.DF_OUTLINE_WIDTH]: parseInt(width, 10)});
     });
-    selectOutlineStyle.addEventListener('change', () => chrome.storage.local.set({[DF_OUTLINE_STYLE_KEY]: selectOutlineStyle.value}));
-    selectOutlineColor.addEventListener('change', () => chrome.storage.local.set({[DF_OUTLINE_COLOR_KEY]: selectOutlineColor.value}));
+    selectOutlineStyle.addEventListener('change', () => chrome.storage.local.set({[STORAGE_KEYS.DF_OUTLINE_STYLE]: selectOutlineStyle.value}));
+    selectOutlineColor.addEventListener('change', () => chrome.storage.local.set({[STORAGE_KEYS.DF_OUTLINE_COLOR]: selectOutlineColor.value}));
 });
