@@ -2,21 +2,21 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8"/>
-    <title>Configurações OmniSort</title>
+    <title>Configurações - Omni Ordenador de Fila</title>
     <style>
         /* Estilos Gerais */
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             width: 280px;
             padding: 16px;
-            background-color: #1f2937; /* Cinza Escuro */
-            color: #e5e7eb; /* Cinza Claro */
+            background-color: #f0f0f0; /* Fundo claro, estilo IDE */
+            color: #333333; /* Texto escuro */
         }
 
         h1 {
             font-size: 18px;
             font-weight: 600;
-            color: #ffffff;
+            color: #000000;
             text-align: center;
             margin: 0 0 20px 0;
         }
@@ -61,7 +61,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: #4b5563; /* Cinza */
+            background-color: #cccccc; /* Cinza claro para inativo */
             transition: .3s;
             border-radius: 22px;
         }
@@ -80,11 +80,11 @@
         }
 
         input:checked + .slider {
-            background-color: #22c55e; /* Verde */
+            background-color: #4285f4; /* Azul para ativo */
         }
 
         input:focus-visible + .slider {
-            box-shadow: 0 0 0 2px #1f2937, 0 0 0 4px #3b82f6; /* Anel azul ao focar */
+            box-shadow: 0 0 0 2px #f0f0f0, 0 0 0 4px #4285f4; /* Anel de foco ajustado para fundo claro */
         }
 
         input:checked + .slider:before {
@@ -95,17 +95,17 @@
         .input-style {
             padding: 6px 8px;
             border-radius: 6px;
-            border: 1px solid #4b5563;
-            background-color: #374151;
-            color: #e5e7eb;
+            border: 1px solid #c0c0c0;
+            background-color: #ffffff;
+            color: #333333;
             font-weight: 500;
             transition: border-color .2s, box-shadow .2s;
         }
 
         .input-style:focus {
             outline: none;
-            border-color: #3b82f6;
-            box-shadow: 0 0 0 2px #3b82f6;
+            border-color: #4285f4;
+            box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
         }
 
         #inputTempo {
@@ -127,7 +127,7 @@
             appearance: none;
             width: 100px;
             height: 8px;
-            background: #4b5563;
+            background: #d1d1d1;
             border-radius: 5px;
             outline: none;
             opacity: 0.7;
@@ -143,7 +143,7 @@
             appearance: none;
             width: 18px;
             height: 18px;
-            background: #3b82f6;
+            background: #4285f4;
             cursor: pointer;
             border-radius: 50%;
         }
@@ -151,7 +151,7 @@
         input[type="range"]::-moz-range-thumb {
             width: 18px;
             height: 18px;
-            background: #3b82f6;
+            background: #4285f4;
             cursor: pointer;
             border-radius: 50%;
         }
@@ -161,8 +161,8 @@
             height: 28px;
             padding: 2px;
             border-radius: 6px;
-            background-color: #374151;
-            border: 1px solid #4b5563;
+            background-color: #ffffff;
+            border: 1px solid #c0c0c0;
             cursor: pointer;
         }
 
@@ -171,8 +171,9 @@
             flex-direction: column;
             gap: 12px;
             padding: 12px;
-            margin-top: -5px;
-            background-color: rgba(255, 255, 255, 0.05);
+            margin-top: 8px;
+            background-color: #ffffff;
+            border: 1px solid #e0e0e0;
             border-radius: 8px;
         }
     </style>
@@ -199,7 +200,7 @@
 
     <!-- Destaque ao Visualizar -->
     <div class="item">
-        <span class="label">Destaque ao Visualizar Dashboard</span>
+        <span class="label">Destaque no Dashboard</span>
         <label class="switch">
             <input type="checkbox" id="toggleDashboardFocus" checked>
             <span class="slider"></span>
