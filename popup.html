@@ -1,42 +1,51 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Configurações Omni</title>
+  <meta charset="UTF-8" />
+  <title>Configurações OmniSort</title>
   <style>
+    /* Estilos Gerais */
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      width: 200px;
-      padding: 15px;
-      background-color: #f8f9fa;
-      color: #333;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      width: 280px;
+      padding: 16px;
+      background-color: #1f2937; /* Cinza Escuro */
+      color: #e5e7eb; /* Cinza Claro */
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #ffffff;
+      text-align: center;
+      margin: 0 0 20px 0;
     }
 
     .container {
       display: flex;
       flex-direction: column;
-      gap: 15px;
+      gap: 18px;
     }
 
     .item {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      min-height: 28px;
     }
 
     .label {
-      font-weight: 600;
+      font-weight: 500;
       font-size: 14px;
+      user-select: none;
     }
 
-    /* Switch Styles */
+    /* Estilos do Switch Moderno */
     .switch {
       position: relative;
       display: inline-block;
-      width: 34px;
-      height: 20px;
+      width: 40px;
+      height: 22px;
     }
 
     .switch input {
@@ -52,50 +61,169 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background-color: #ccc;
-      transition: .4s;
-      border-radius: 34px;
+      background-color: #4b5563; /* Cinza */
+      transition: .3s;
+      border-radius: 22px;
     }
 
     .slider:before {
       position: absolute;
       content: "";
-      height: 12px;
-      width: 12px;
-      left: 4px;
-      bottom: 4px;
+      height: 16px;
+      width: 16px;
+      left: 3px;
+      bottom: 3px;
       background-color: white;
-      transition: .1s;
+      transition: .3s;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    }
+
+    input:checked + .slider {
+      background-color: #22c55e; /* Verde */
+    }
+
+    input:focus-visible + .slider {
+        box-shadow: 0 0 0 2px #1f2937, 0 0 0 4px #3b82f6; /* Anel azul ao focar */
+    }
+
+    input:checked + .slider:before {
+      transform: translateX(18px);
+    }
+
+    /* Estilos dos Inputs e Selects */
+    .input-style {
+      padding: 6px 8px;
+      border-radius: 6px;
+      border: 1px solid #4b5563;
+      background-color: #374151;
+      color: #e5e7eb;
+      font-weight: 500;
+      transition: border-color .2s, box-shadow .2s;
+    }
+    .input-style:focus {
+      outline: none;
+      border-color: #3b82f6;
+      box-shadow: 0 0 0 2px #3b82f6;
+    }
+
+    #inputTempo { width: 60px; text-align: center; }
+    #selectOutlineStyle { width: 110px; }
+    #selectOutlineColor { width: 110px; }
+
+    /* Estilo do Range Slider */
+    input[type="range"] {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100px;
+      height: 8px;
+      background: #4b5563;
+      border-radius: 5px;
+      outline: none;
+      opacity: 0.7;
+      transition: opacity .2s;
+    }
+    input[type="range"]:hover {
+      opacity: 1;
+    }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 18px;
+      height: 18px;
+      background: #3b82f6;
+      cursor: pointer;
+      border-radius: 50%;
+    }
+    input[type="range"]::-moz-range-thumb {
+      width: 18px;
+      height: 18px;
+      background: #3b82f6;
+      cursor: pointer;
       border-radius: 50%;
     }
 
-    input:checked+.slider {
-      background-color: #677365;
+    #inputOutlineColor {
+      width: 40px;
+      height: 28px;
+      padding: 2px;
+      border-radius: 6px;
+      background-color: #374151;
+      border: 1px solid #4b5563;
+      cursor: pointer;
     }
 
-    input:focus+.slider {
-      box-shadow: 0 0 1px #677365;
-    }
-
-    input:checked+.slider:before {
-      transform: translateX(14px);
+    .options-container {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      padding: 12px;
+      margin-top: -5px;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 8px;
     }
   </style>
 </head>
 
 <body>
+  <h1>Omni Ordenador de Fila</h1>
   <div class="container">
+    <!-- Destaque de Inativos -->
     <div class="item">
-      <span class="label">20Inativar</span>
+      <span class="label">Destaque de Inativos</span>
       <label class="switch">
         <input type="checkbox" id="toggleInativar" checked>
         <span class="slider"></span>
       </label>
     </div>
     <div class="item">
-      <span class="label">Minutos para Inativar</span>
-      <input type="number" id="inputTempo" min="1" value="20"
-        style="width: 50px; padding: 4px; border-radius: 4px; border: 1px solid #ccc;">
+      <span class="label">Minutos para Destaque</span>
+      <input type="number" id="inputTempo" min="1" value="20" class="input-style">
+    </div>
+
+    <!-- Separador -->
+    <hr style="border: none; border-top: 1px solid #4b5563; margin: 4px 0;">
+
+    <!-- Destaque ao Visualizar -->
+    <div class="item">
+      <span class="label">Destaque ao Visualizar Dashboard</span>
+      <label class="switch">
+        <input type="checkbox" id="toggleDashboardFocus" checked>
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <!-- Opções de Personalização -->
+    <div id="dashboardFocusOptions" class="options-container">
+      <div class="item">
+        <span class="label">Estilo da Borda</span>
+        <select id="selectOutlineStyle" class="input-style">
+          <option value="dotted">Pontilhada</option>
+          <option value="dashed">Tracejada</option>
+          <option value="solid">Sólida</option>
+          <option value="double">Dupla</option>
+        </select>
+      </div>
+      <div class="item">
+        <span class="label">Espessura da Borda</span>
+        <div style="display: flex; align-items: center; gap: 8px;">
+          <input type="range" id="rangeOutlineWidth" min="1" max="8" value="3">
+          <span id="outlineWidthValue" style="width: 20px; text-align: right;">3px</span>
+        </div>
+      </div>
+      <div class="item">
+        <span class="label">Cor da Borda</span>
+        <select id="selectOutlineColor" class="input-style">
+          <option value="#007bff" selected>Azul Padrão</option>
+          <option value="#fa2525">Red Stop</option>
+          <option value="#f97316">Liquid Lava</option>
+          <option value="#fbff00">Electric Banana</option>
+          <option value="#6ff916">Venomous Green</option>
+          <option value="#f916ca">Glamour Pink</option>
+          <option value="#16f9ec">Ice Temple</option>
+          <option value="#a016f9">Vivid Violet</option>
+        </select>
+      </div>
     </div>
   </div>
   <script src="popup.js"></script>
