@@ -2,9 +2,12 @@
   "manifest_version": 3,
   "name": "Omni - Ordenador de Fila",
   "version": "3.0.0",
-  "description": "Ordena atendimentos por tempo e destaca atendimentos sem interação há mais de 20 minutos.",
+  "description": "Otimize seu fluxo no Omni: ordene filas, monitore inatividade e destaque atendimentos importantes com opções de personalização.",
   "icons": {
     "128": "icon.png"
+  },
+  "background": {
+    "service_worker": "background.js"
   },
   "content_scripts": [
     {
