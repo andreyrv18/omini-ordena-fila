@@ -30,7 +30,8 @@ const SortButtonInjector = {
      * Cria o botão de ordenação e o insere no DOM.
      * @param {HTMLElement} referenceItem O elemento de referência antes do qual o botão será inserido.
      */
-    createAndInjectButton(referenceItem) {
+   createAndInjectButton(referenceItem) {
+        // 1. PRIMEIRO: Criar o elemento
         const sortItem = document.createElement('div');
         sortItem.className = 'item';
         sortItem.dataset.id = 'ordenar_fila';
@@ -38,6 +39,7 @@ const SortButtonInjector = {
         sortItem.title = 'Ordenar por Tempo Mais Antigo';
         sortItem.style.cursor = 'pointer';
 
+        // 2. Criar o ícone
         const icon = document.createElement('i');
         icon.className = 'fas fa-hourglass-start';
         icon.style.color = this.COLOR_DEFAULT;
@@ -45,26 +47,31 @@ const SortButtonInjector = {
 
         sortItem.appendChild(icon);
 
+        // 3. Definir o evento de clique
         sortItem.onclick = () => {
-            // Previne múltiplos cliques rápidos
             if (icon.style.color === this.COLOR_ACTIVE) return;
 
-            // Feedback visual de clique
             icon.style.color = this.COLOR_ACTIVE;
             icon.style.transform = "rotate(360deg)";
             sortItem.style.transform = "scale(0.90)";
+            
             setTimeout(() => sortItem.style.transform = "scale(1)", 150);
 
-            // Executa a ordenação (chama o outro módulo)
-            OmniSorter.sort();
+            // Chama a lógica de ordenação do outro arquivo
+            if (typeof OmniSorter !== 'undefined') {
+                OmniSorter.sort();
+            } else {
+                console.error("OmniSort: Módulo OmniSorter não carregado.");
+            }
 
-            // Reseta o ícone após um tempo para indicar que a ação terminou
             setTimeout(() => {
                 icon.style.color = this.COLOR_DEFAULT;
                 icon.style.transform = "rotate(0deg)";
             }, 1200);
         };
 
-        referenceItem.before(sortItem);
+        // 4. POR ÚLTIMO: Inserir no DOM
+        // O .before() é mais moderno e simples que o insertBefore
+        referenceItem.before(sortItem); 
     }
 };
