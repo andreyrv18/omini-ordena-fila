@@ -10,13 +10,13 @@
             width: 280px;
             padding: 16px;
             background-color: #f0f0f0; /* Fundo claro, estilo IDE */
-            color: #333333; /* Texto escuro */
+            color: #424242; /* Texto escuro */
         }
 
         h1 {
             font-size: 18px;
             font-weight: 600;
-            color: #000000;
+            color: #4f2407;
             text-align: center;
             margin: 0 0 20px 0;
         }
@@ -35,6 +35,8 @@
         }
 
         .label {
+            cursor: pointer;
+
             font-weight: 500;
             font-size: 14px;
             user-select: none;
@@ -80,11 +82,11 @@
         }
 
         input:checked + .slider {
-            background-color: #4285f4; /* Azul para ativo */
+            background-color: #f97316; /* liquid lava para ativo */
         }
 
         input:focus-visible + .slider {
-            box-shadow: 0 0 0 2px #f0f0f0, 0 0 0 4px #4285f4; /* Anel de foco ajustado para fundo claro */
+            box-shadow: 0 0 0 2px #424242, 0 0 0 4px #f97316; /* Anel de foco ajustado para fundo claro */
         }
 
         input:checked + .slider:before {
@@ -95,16 +97,16 @@
         .input-style {
             padding: 6px 8px;
             border-radius: 6px;
-            border: 1px solid #c0c0c0;
+            border: 1px solid #4f2407;
             background-color: #ffffff;
-            color: #333333;
-            font-weight: 500;
+            color: #424242;
+            font-weight: 700;
             transition: border-color .2s, box-shadow .2s;
         }
 
         .input-style:focus {
             outline: none;
-            border-color: #4285f4;
+            border-color: #f97316;
             box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2);
         }
 
@@ -115,6 +117,7 @@
 
         #selectOutlineStyle {
             width: 110px;
+
         }
 
         #selectOutlineColor {
@@ -143,7 +146,7 @@
             appearance: none;
             width: 18px;
             height: 18px;
-            background: #4285f4;
+            background: #f97316;
             cursor: pointer;
             border-radius: 50%;
         }
@@ -151,7 +154,7 @@
         input[type="range"]::-moz-range-thumb {
             width: 18px;
             height: 18px;
-            background: #4285f4;
+            background: #f97316;
             cursor: pointer;
             border-radius: 50%;
         }
@@ -180,7 +183,7 @@
 </head>
 
 <body>
-<h1>Omni Ordenador de Fila</h1>
+<h1> <strong>Omni Ordenador de Fila</strong> </h1>
 <div class="container">
     <!-- Destaque de Inativos -->
     <div class="item">
@@ -228,7 +231,7 @@
         <div class="item">
             <span class="label">Cor da Borda</span>
             <select id="selectOutlineColor" class="input-style">
-                <option value="#007bff" selected>Azul Padrão</option>
+                <option  value="#007bff" selected>Azul Padrão</option>
                 <option value="#fa2525">Red Stop</option>
                 <option value="#f97316">Liquid Lava</option>
                 <option value="#fbff00">Electric Banana</option>
@@ -243,7 +246,6 @@
 
 <script src="shared/storageKeys.js"></script>
 <script src="popup.js"></script>
-</body>
 </body>
 
 </html>
