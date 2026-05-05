@@ -1,6 +1,7 @@
 # 🚀 Omni - Ordenador de Fila & Monitor de Produtividade
 
-![Version](https://img.shields.io/badge/version-3.0.0-blue) ![License](https://img.shields.io/badge/license-MIT-green)
+![Version](https://img.shields.io/badge/version-3.0.1-blue) ![License](https://img.shields.io/badge/license-MIT-green) ![Last Updated](https://img.shields.io/chrome-web-store/last-updated/gkgjbjjmemafdobnaddiihkijddojpij?label=Atualizado&logo=googlechrome&logoColor=white) ![Stars](https://img.shields.io/chrome-web-store/stars/gkgjbjjmemafdobnaddiihkijddojpij?label=Avalia%C3%A7%C3%A3o&logo=googlechrome&logoColor=white)
+
 
 Uma extensão para Google Chrome desenvolvida para otimizar o fluxo de trabalho de atendentes na plataforma Omni. A ferramenta permite ordenar filas de espera por tempo (antiguidade) e monitorar visualmente a inatividade em chats abertos.
 
