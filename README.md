@@ -48,9 +48,9 @@ Ajuste a extensão para se adequar perfeitamente ao seu fluxo de trabalho. Atrav
 
 ### Personalização
 
-![popup](Chrome-Store-Imagens/popup-v3.0.0.png)
-![popup](Chrome-Store-Imagens/popup-destaque-v3.0.0.png)
-![popup](Chrome-Store-Imagens/popup-cor-borda-v3.0.0.0.png)
+![popup](Chrome-Store-Imagens/popup-v3.0.1.png)
+![popup](Chrome-Store-Imagens/popup-destaque-v3.0.1.png)
+![popup](Chrome-Store-Imagens/popup-cor-borda-v3.0.0.1.png)
 
 
 ---
